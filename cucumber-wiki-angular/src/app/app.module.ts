@@ -2,15 +2,38 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { EditorComponent } from './editor/editor.component';
+import { SingupComponent } from './singup/singup.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { AuthService } from './auth/auth.service';
+import { EntriesService } from './entries.service';
+import { UserPageComponent } from './user-page/user-page.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AuthGuard } from './auth/auth-guard.service';
+import { EntriesComponent } from './entries/entries.component';
+import { EntryComponent } from './entry/entry.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    EditorComponent,
+    SingupComponent,
+    UserPageComponent,
+    NavbarComponent,
+    EntriesComponent,
+    EntryComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService, EntriesService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

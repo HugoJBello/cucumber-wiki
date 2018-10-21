@@ -1,0 +1,23 @@
+<div class="form-group">
+  <label for="title">Title</label>
+  <input type="text" id="Title" class="form-control" placeholder="title" [(ngModel)]="entry.title" name="title" required />
+</div>
+
+<div class="form-group">
+  <label for="content">Tags</label>
+<label for="tags" class="sr-only">Tags</label>
+<input type="text" id="tags" class="form-control" placeholder="tags" [(ngModel)]="entry.tags" name="tags" required />
+</div>
+
+<div class="form-group">
+  <label for="hidden" class="sr-only">hidden</label>
+  Hidden <input type="checkbox" id="hidden" placeholder="false" [(ngModel)]="entry.hidden" name="tags" required />
+</div>
+
+<button class="btn btn-primary" (click)="submmit()">Publish</button>
+<br>
+<br>
+<div class="form-group">
+  <label for="content">Content</label>
+  <textarea class="form-control rounded-0" id="content" rows="10" [(ngModel)]="entry.content"></textarea>
+</div>

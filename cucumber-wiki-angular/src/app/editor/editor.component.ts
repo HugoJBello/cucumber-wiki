@@ -1,0 +1,29 @@
+import { Component, OnInit } from '@angular/core';
+import { EntryDTO, EntriesService } from '../entries.service';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-editor',
+  templateUrl: './editor.component.html',
+  styleUrls: ['./editor.component.css']
+})
+export class EditorComponent implements OnInit {
+
+  constructor(private router: Router, private entriesService: EntriesService) { }
+  entry: EntryDTO = null;
+  ngOnInit() {
+    this.initEntry();
+  }
+  async submmit() {
+    this.entry._id = this.entry.title;
+    this.entry.name = this.entry.title;
+    await this.entriesService.saveEntry(this.entry);
+    this.router.navigate(['entries']);
+
+  }
+  initEntry() {
+    this.entry =  { _id: 'enter_title', title: 'enter title', content: 'enter content', 
+    tags: 'enter tags', hidden: false, created_by: '', edited_by: '', created_at: new Date(), updated_at: new Date()};
+  }
+
+}
