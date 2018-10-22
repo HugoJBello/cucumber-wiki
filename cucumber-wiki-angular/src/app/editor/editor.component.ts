@@ -15,14 +15,14 @@ export class EditorComponent implements OnInit {
   hidden: string;
 
   async ngOnInit() {
+    this.initEntry();
+
     this.route.params.subscribe(async params => {
       if (params['id']) {
         this.entryName = params['id'].toString();
         console.log(this.entryName);
         this.entry = await this.entriesService.getEntry(this.entryName) as EntryDTO;
         console.log(this.entry);
-      } else {
-        this.initEntry();
       }
       if (params['hidden']) { this.hidden = params['hidden'].toString(); }
     });
