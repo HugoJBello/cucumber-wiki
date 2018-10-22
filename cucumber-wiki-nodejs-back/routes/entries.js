@@ -13,17 +13,18 @@ router.post('/edit_entry', passport.authenticate('jwt', { session: false }), fun
       tags: req.body.tags,
       name: req.body.name,
       created_at: req.body.created_at,
-      edited_at:req.body.edited_at,
-      created_by:req.body.created_by,
-      updated_by:req.body.updated_by,
+      edited_at: req.body.edited_at,
+      created_by: req.body.created_by,
+      updated_by: req.body.updated_by,
       hidden: req.body.hidden,
-      app_id:req.body.app_id,
-      _id:req.body._id,
+      app_id: req.body.app_id,
+      _id: req.body._id,
     };
 
-    newPost.findOneAndUpdate({_id:newPost._id}, newPost,{upsert: true},function (err) {
+    Entry.findOneAndUpdate({ _id: newPost._id }, newPost, { upsert: true }, function (err) {
       if (err) {
         console.log(err);
+        Entry.save(newPost);
         return res.json({ success: false, msg: 'Save entry failed.' });
       }
       res.json({ success: true, msg: 'Successful created new entry.' });
@@ -33,8 +34,23 @@ router.post('/edit_entry', passport.authenticate('jwt', { session: false }), fun
   }
 });
 
-router.get('/titled/:title', function (req, res) {
-  Entry.findOne({ title: req.params.title }).exec(function (err, entry) {
+router.get('/delete_entry/name=:name', passport.authenticate('jwt', { session: false }), function (req, res) {
+  var token = getToken(req.headers);
+  if (token) {
+    Entry.findOneAndDelete({ name: req.params.name }, function (err) {
+      if (err) {
+        console.log(err);
+        return res.json({ success: false, msg: 'Delete entry failed.' });
+      }
+      res.json({ success: true, msg: 'Successful deleted entry.' });
+    });
+  } else {
+    return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+  }
+});
+
+router.get('/entry/:name', function (req, res) {
+  Entry.findOne({ title: req.params.name }).exec(function (err, entry) {
     if (err) throw err;
     return res.json(entry);
   });
