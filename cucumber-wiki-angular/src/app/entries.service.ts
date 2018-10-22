@@ -28,6 +28,13 @@ export class EntriesService {
     return await this.http.post(this.urlBackend + '/entries/edit_entry', entry, httpOptions).toPromise();
   }
 
+  async deleteEntry(entryName: string): Promise<Object> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Authorization': localStorage.getItem('jwtToken') })
+    };
+    return await this.http.get(this.urlBackend + '/entries/delete_entry/name=' + entryName, httpOptions).toPromise();
+  }
+
 }
 
 export class EntryDTO {

@@ -15,15 +15,29 @@ export class EditorComponent implements OnInit {
     this.initEntry();
   }
   async submmit() {
-    this.entry._id = this.entry.title;
-    this.entry.name = this.entry.title;
+    this.updateEntry();
     await this.entriesService.saveEntry(this.entry);
     this.router.navigate(['entries']);
 
   }
+
+  async delete() {
+    this.updateEntry();
+    await this.entriesService.deleteEntry(this.entry.name);
+    this.router.navigate(['entries']);
+
+  }
+
+  updateEntry() {
+    this.entry._id = this.entry.title;
+    this.entry.name = this.entry.title;
+  }
+
   initEntry() {
-    this.entry =  { _id: 'enter_title', title: 'enter title', content: 'enter content', 
-    tags: 'enter tags', hidden: false, created_by: '', edited_by: '', created_at: new Date(), updated_at: new Date()};
+    this.entry = {
+      _id: 'enter_title', title: 'enter title', content: 'enter content',
+      tags: 'enter tags', hidden: false, created_by: '', edited_by: '', created_at: new Date(), updated_at: new Date()
+    };
   }
 
 }
