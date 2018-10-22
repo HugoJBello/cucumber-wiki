@@ -56,6 +56,27 @@ router.get('/entry/name=:name', function (req, res) {
   });
 });
 
+router.get('/find/text=:text&limit=:limit&skip=:skip', function (req, res) {
+  let limit;
+  let skip;
+  if (req.params.limit) {
+    limit = parseInt(req.params.limit);
+  }
+  if (req.params.skip) {
+    skip = parseInt(req.params.skip)
+  }
+  Entry.find({
+    $or: [
+      { 'title': { "$regex": req.params.text, "$options": "i" } },
+      { 'content': { "$regex": req.params.text, "$options": "i" } },
+      { 'name': { "$regex": req.params.text, "$options": "i" } }
+    ]
+  }).limit(limit).skip(skip).exec(function (err, entry) {
+    if (err) throw err;
+    return res.json(entry);
+  });
+});
+
 router.get('/entries_list/limit=:limit&skip=:skip', function (req, res) {
   let limit;
   let skip;

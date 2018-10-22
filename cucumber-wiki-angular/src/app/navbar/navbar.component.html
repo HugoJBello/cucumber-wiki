@@ -1,27 +1,33 @@
-<nav class="navbar navbar-dark bg-dark mb-5">
-  <a class="navbar-brand" href="/">Secured App</a>
-  <div class="navbar-expand mr-auto">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/entries" routerLinkActive="active">Entries</a>
-      <a class="nav-item nav-link" routerLink="/editor" routerLinkActive="active">New entry</a>
-      <a class="nav-item nav-link" routerLink="/user_page" routerLinkActive="active">user page</a>
-      <a class="nav-item nav-link" routerLink="/find" routerLinkActive="active">find</a>
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg mb-5">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <a class="navbar-brand" href="/">Secured App</a>
+    <div class="navbar-expand mr-auto">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/entries" routerLinkActive="active">Entries</a>
+        <a class="nav-item nav-link" routerLink="/editor" routerLinkActive="active">New entry</a>
+        <a class="nav-item nav-link" routerLink="/user_page" routerLinkActive="active">user page</a>
+        <a class="nav-item nav-link" routerLink="/find" routerLinkActive="active">find</a>
+      </div>
     </div>
-  </div>
-  <div class="navbar-expand ml-auto navbar-nav">
-    <div class="navbar-nav">
-      <span *ngIf="loggedUser" class="nav-item nav-link">
-        {{loggedUser}}
-      </span>
-      <a *ngIf="loggedUser" class="nav-item nav-link" (click)="logout()">
-        logout
-      </a>
-      <a *ngIf="!loggedUser" class="nav-item nav-link" routerLink="/login" routerLinkActive="active">
-        login
-      </a>
-      <a class="nav-item nav-link" routerLink="/signup" routerLinkActive="active">
-        signup
-      </a>
+    <div class="navbar-expand ml-auto navbar-nav">
+      <div class="navbar-nav">
+        <span *ngIf="loggedUser" class="nav-item nav-link">
+          {{loggedUser}}
+        </span>
+        <a *ngIf="loggedUser" class="nav-item nav-link" (click)="logout()">
+          logout
+        </a>
+        <a *ngIf="!loggedUser" class="nav-item nav-link" routerLink="/login" routerLinkActive="active">
+          login
+        </a>
+        <a class="nav-item nav-link" routerLink="/signup" routerLinkActive="active">
+          signup
+        </a>
+      </div>
     </div>
   </div>
 </nav>

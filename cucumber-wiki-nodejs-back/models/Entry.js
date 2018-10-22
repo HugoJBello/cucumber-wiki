@@ -41,6 +41,7 @@ var EntrySchema = new Schema({
     }
 },
     { collection: 'entries' });
-EntrySchema.index({ title: 'text', content: 'text' });
+
+EntrySchema.index({ '$**': 'text' });
 
 module.exports = mongoose.model('BlogEntry', EntrySchema);

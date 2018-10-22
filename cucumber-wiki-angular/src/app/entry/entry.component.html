@@ -1,3 +1,33 @@
-<p>
-  entry works!
-</p>
+<div *ngIf="entry" class="card card-quote-entry background-light-gray">
+
+
+  <div *ngIf="entry" class="card-title text-center">
+    <h1 class="">{{entry.title}}</h1>
+    <p>
+      <a class="nav-link" routerLink="/edit/{{entry.name}}" routerLinkActive="active">
+        edit
+      </a>
+    </p>
+  </div>
+  <br>
+
+  <div class="text-markdown">
+    <ngx-md *ngIf="entry" [data]="entry.content"></ngx-md>
+  </div>
+  <div class="card info mb-3">
+    <ul class="list-group" *ngIf="entry">
+      <li class="list-group-item" *ngIf="entry.created_by">
+        <em>
+          <span i18n>Created by </span>
+          <a routerLink="/entries-by/{{entry.created_by}}">{{entry.created_by}}</a>
+        </em>
+      </li>
+      <li class="list-group-item" *ngIf="entry.created_at">
+        <em>
+          <span i18n>Created at </span>
+          {{entry.created_at}}
+        </em>
+      </li>
+    </ul>
+  </div>
+</div>

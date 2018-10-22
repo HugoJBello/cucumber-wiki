@@ -16,6 +16,7 @@ import { AuthGuard } from './auth/auth-guard.service';
 import { EntriesComponent } from './entries/entries.component';
 import { EntryComponent } from './entry/entry.component';
 import { FindComponent } from './find/find.component';
+import { NgxMdModule } from 'ngx-md';
 
 @NgModule({
   declarations: [
@@ -30,10 +31,11 @@ import { FindComponent } from './find/find.component';
     FindComponent,
   ],
   imports: [
+    NgxMdModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [AuthService, EntriesService, AuthGuard],
   bootstrap: [AppComponent]
