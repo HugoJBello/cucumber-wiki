@@ -29,8 +29,7 @@ var EntrySchema = new Schema({
         type: Date
     },
     tags: {
-        //type: Array[String],
-        type: String,
+        type: Array,
         required: true
     },
     hidden: {

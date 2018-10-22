@@ -47,7 +47,7 @@ export class EntryDTO {
   updated_at: Date;
   created_at: Date;
   content: string;
-  tags: string;
+  tags?: string[];
   edited_by?: string;
   created_by: string;
   hidden: boolean;
