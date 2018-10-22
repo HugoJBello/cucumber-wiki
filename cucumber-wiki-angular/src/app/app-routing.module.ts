@@ -9,6 +9,7 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { AuthGuard } from './auth/auth-guard.service';
 import { EntriesComponent } from './entries/entries.component';
 import { EntryComponent } from './entry/entry.component';
+import { FindComponent } from './find/find.component';
 
 
 
@@ -27,7 +28,21 @@ const routes = [
     component: SingupComponent
   },
   {
-    path: 'edit',
+    path: 'editor',
+    component: EditorComponent,
+    canActivate: [
+      AuthGuard
+    ]
+  },
+  {
+    path: 'edit/:id',
+    component: EditorComponent,
+    canActivate: [
+      AuthGuard
+    ]
+  },
+  {
+    path: 'edit/:id/:hidden',
     component: EditorComponent,
     canActivate: [
       AuthGuard
@@ -38,8 +53,16 @@ const routes = [
     component: EntriesComponent,
   },
   {
-    path: 'entry',
-    component: EntryComponent,
+    path: 'entry/:id',
+    component: EntryComponent
+  },
+  {
+    path: 'find',
+    component: FindComponent,
+  },
+  {
+    path: 'find/:id',
+    component: FindComponent
   },
   {
     path: 'user_page',
@@ -52,7 +75,7 @@ const routes = [
 
 @NgModule({
   imports: [
-    CommonModule, RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes)
   ],
   exports: [RouterModule],
   providers: [AuthGuard],

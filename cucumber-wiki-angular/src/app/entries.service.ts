@@ -14,11 +14,14 @@ export class EntriesService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Authorization': localStorage.getItem('jwtToken') })
     };
-    return await this.http.get(this.urlBackend + '/titled/' + title, httpOptions).toPromise();
+    return await this.http.get(this.urlBackend + '/entries/entry/name=' + title, httpOptions).toPromise();
   }
 
   async getEntries(limit: number, skip: number): Promise<any> {
-    return await this.http.get(this.urlBackend + '/entries/entries_list/limit=' + limit + '&skip=' + skip).toPromise();
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Authorization': localStorage.getItem('jwtToken') })
+    };
+    return await this.http.get(this.urlBackend + '/entries/entries_list/limit=' + limit + '&skip=' + skip, httpOptions).toPromise();
   }
 
   async saveEntry(entry: EntryDTO): Promise<Object> {

@@ -15,6 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AuthGuard } from './auth/auth-guard.service';
 import { EntriesComponent } from './entries/entries.component';
 import { EntryComponent } from './entry/entry.component';
+import { FindComponent } from './find/find.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { EntryComponent } from './entry/entry.component';
     NavbarComponent,
     EntriesComponent,
     EntryComponent,
+    FindComponent,
   ],
   imports: [
     BrowserModule,

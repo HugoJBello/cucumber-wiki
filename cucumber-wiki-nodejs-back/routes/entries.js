@@ -49,7 +49,7 @@ router.get('/delete_entry/name=:name', passport.authenticate('jwt', { session: f
   }
 });
 
-router.get('/entry/:name', function (req, res) {
+router.get('/entry/name=:name', function (req, res) {
   Entry.findOne({ title: req.params.name }).exec(function (err, entry) {
     if (err) throw err;
     return res.json(entry);
