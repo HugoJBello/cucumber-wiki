@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class FindComponent implements OnInit {
 
   constructor() { }
-
+  text = "text";
   ngOnInit() {
   }
 
