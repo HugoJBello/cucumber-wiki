@@ -11,34 +11,34 @@ export class EntriesService {
 
 
   async getEntry(title: string): Promise<Object> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Authorization': localStorage.getItem('jwtToken') })
-    };
-    return await this.http.get(this.urlBackend + '/entries/entry/name=' + title, httpOptions).toPromise();
+    return await this.http.get(this.urlBackend + '/entries/entry/name=' + title, this.getHeaders()).toPromise();
   }
 
   async getEntries(limit: number, skip: number): Promise<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Authorization': localStorage.getItem('jwtToken') })
-    };
-    return await this.http.get(this.urlBackend + '/entries/entries_list/limit=' + limit + '&skip=' + skip, httpOptions).toPromise();
+    return await this.http.get(this.urlBackend + '/entries/entries_list/limit=' + limit + '&skip=' + skip, this.getHeaders()).toPromise();
+  }
+
+  async getEntriesSort(limit: number, skip: number, sort: string, order: string): Promise<any> {
+    return await this.http.get(this.urlBackend + '/entries/entries_list/limit=' + limit + '&skip='
+      + skip + '&sort=' + sort + '&order=' + order, this.getHeaders()).toPromise();
   }
 
   async saveEntry(entry: EntryDTO): Promise<Object> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Authorization': localStorage.getItem('jwtToken') })
-    };
-    return await this.http.post(this.urlBackend + '/entries/edit_entry', entry, httpOptions).toPromise();
+    return await this.http.post(this.urlBackend + '/entries/edit_entry', entry, this.getHeaders()).toPromise();
   }
 
   async deleteEntry(entryName: string): Promise<Object> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Authorization': localStorage.getItem('jwtToken') })
-    };
-    return await this.http.get(this.urlBackend + '/entries/delete_entry/name=' + entryName, httpOptions).toPromise();
+    return await this.http.get(this.urlBackend + '/entries/delete_entry/name=' + entryName, this.getHeaders()).toPromise();
   }
 
+  getHeaders() {
+    return {
+      headers: new HttpHeaders({ 'Authorization': localStorage.getItem('jwtToken') })
+    };
+  }
 }
+
+
 
 export class EntryDTO {
   _id: string;

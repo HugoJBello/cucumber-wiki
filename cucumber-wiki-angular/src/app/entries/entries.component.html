@@ -1,4 +1,20 @@
-<h2>Entries</h2>
+<h1>Entries</h1>
+<div class="row">
+  <div class="col-8"> </div>
+  <div class="col-4">
+    <mat-form-field>
+      <mat-select placeholder="order using:" [(value)]="sort">
+        <mat-option *ngFor="let order of orderingOptions" [value]="order">
+          {{order}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <a (click)="refresh()" style="padding-left: 10px">
+      <mat-icon>refresh</mat-icon>
+    </a>
+  </div>
+</div>
+
 <div class="card-columns">
   <div class="card" *ngFor="let entry of entries">
     <div class="card-body">
@@ -6,7 +22,7 @@
         <h4>{{entry.title}}</h4>
       </a>
       <div class="card-text">
-        {{entry.content}}
+        <ngx-md *ngIf="entry" [data]="entry.content"></ngx-md>
       </div>
     </div>
   </div>

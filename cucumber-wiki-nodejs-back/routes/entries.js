@@ -77,6 +77,26 @@ router.get('/find/text=:text&limit=:limit&skip=:skip', function (req, res) {
   });
 });
 
+router.get('/entries_list/limit=:limit&skip=:skip&sort=:sort&order=:order', function (req, res) {
+  let limit;
+  let skip;
+  let sort = req.params.sort;
+  let order = req.params.order;
+  if (req.params.limit) {
+    limit = parseInt(req.params.limit);
+  }
+  if (req.params.skip) {
+    skip = parseInt(req.params.skip)
+  }
+  sortObj = {};
+  sortObj[sort] = order
+  console.log(sortObj);
+  Entry.find({}).limit(limit).skip(skip).sort(sortObj).exec(function (err, entry) {
+    if (err) throw err;
+    return res.json(entry);
+  });
+});
+
 router.get('/entries_list/limit=:limit&skip=:skip', function (req, res) {
   let limit;
   let skip;

@@ -13,7 +13,7 @@ export class EditorComponent implements OnInit {
   entry: EntryDTO = null;
   entryName: string;
   hidden: string;
-  tags ="enter tags";
+  tags = 'enter tags';
 
   async ngOnInit() {
     this.initEntry();
@@ -45,7 +45,7 @@ export class EditorComponent implements OnInit {
   updateEntry() {
     this.entry._id = this.entry.title;
     this.entry.name = this.entry.title;
-    if (this.tags) {this.entry.tags = this.tags.split(';');}
+    if (this.tags) { this.entry.tags = this.tags.split(';'); }
   }
 
   initEntry() {

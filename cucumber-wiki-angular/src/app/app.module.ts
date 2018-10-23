@@ -17,6 +17,9 @@ import { EntriesComponent } from './entries/entries.component';
 import { EntryComponent } from './entry/entry.component';
 import { FindComponent } from './find/find.component';
 import { NgxMdModule } from 'ngx-md';
+import { MatSelectModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,9 @@ import { NgxMdModule } from 'ngx-md';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    MatSelectModule,
+    MatIconModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService, EntriesService, AuthGuard],
   bootstrap: [AppComponent]
