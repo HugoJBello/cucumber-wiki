@@ -18,6 +18,11 @@ export class EntriesService {
     return await this.http.get(this.urlBackend + '/entries/entries_list/limit=' + limit + '&skip=' + skip, this.getHeaders()).toPromise();
   }
 
+  async findEntries(text: string, limit: number, skip: number): Promise<any> {
+    return await this.http.get(this.urlBackend + '/entries/find/text='
+      + text + '&limit=' + limit + '&skip=' + skip, this.getHeaders()).toPromise();
+  }
+
   async getEntriesSort(limit: number, skip: number, sort: string, order: string): Promise<any> {
     return await this.http.get(this.urlBackend + '/entries/entries_list/limit=' + limit + '&skip='
       + skip + '&sort=' + sort + '&order=' + order, this.getHeaders()).toPromise();

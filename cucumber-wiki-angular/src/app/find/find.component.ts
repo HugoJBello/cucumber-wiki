@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EntriesService } from '../entries.service';
 
 @Component({
   selector: 'app-find',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FindComponent implements OnInit {
 
-  constructor() { }
-  text = "text";
+  constructor(private entriesService: EntriesService) { }
+  text = 'text';
+  limit = 10;
   ngOnInit() {
+  }
+
+  find() {
+    this.entriesService.findEntries(this.text, this.limit, 0);
   }
 
 }

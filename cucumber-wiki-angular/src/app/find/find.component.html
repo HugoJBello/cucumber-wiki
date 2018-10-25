@@ -1,10 +1,10 @@
 <div class="form-group">
     <div class="row">
         <div class="col-8">
-          <label for="inputfind" class="sr-only">Find</label>
-          <input type="text" class="form-control" id="inputfind" placeholder="text" [(ngModel)]="text">
+            <label for="inputfind" class="sr-only">Find</label>
+            <input type="text" class="form-control" id="inputfind" placeholder="text" [(ngModel)]="text">
         </div>
-    <div class="col-4">
-        <button type="submit" class="btn btn-primary mb-2">Find</button>
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary mb-2" (click)="find()">Find</button>
+        </div>
     </div>
-</div>
