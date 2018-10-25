@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginData, UserRetrieved, NewUser } from './user';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { ConfigService } from '../config/config.service';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private router: Router) { }
-  urlBackend = 'http://hbello.info';
+  constructor(private http: HttpClient, private router: Router, private config: ConfigService) { }
+  urlBackend = this.config.urlBackend;
   loggedUser: string;
   loggedUser$: Subject<string> = new Subject();
 

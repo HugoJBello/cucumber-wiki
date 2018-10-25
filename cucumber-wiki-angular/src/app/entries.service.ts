@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ConfigService } from './config/config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EntriesService {
 
-  constructor(private http: HttpClient) { }
-  // urlBackend = 'http://innate-trees-220508.appspot.com';
-  urlBackend = 'http://localhost:3000';
+  constructor(private http: HttpClient, private config: ConfigService) { }
+  urlBackend = this.config.urlBackend;
   // urlBackend = 'http://hbello.info';
 
 

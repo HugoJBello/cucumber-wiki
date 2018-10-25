@@ -20,6 +20,7 @@ import { NgxMdModule } from 'ngx-md';
 import { MatSelectModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { ConfigService } from './config/config.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     BrowserAnimationsModule
   ],
-  providers: [AuthService, EntriesService, AuthGuard],
+  providers: [AuthService,
+    EntriesService,
+    ConfigService,
+    AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
