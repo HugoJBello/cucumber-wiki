@@ -7,7 +7,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class EntriesService {
 
   constructor(private http: HttpClient) { }
+  // urlBackend = 'http://innate-trees-220508.appspot.com';
   urlBackend = 'http://localhost:3000';
+  // urlBackend = 'http://hbello.info';
 
 
   async getEntry(title: string): Promise<Object> {

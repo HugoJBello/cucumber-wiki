@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
-  urlBackend = 'http://localhost:3000';
+  urlBackend = 'http://hbello.info';
   loggedUser: string;
   loggedUser$: Subject<string> = new Subject();
 
