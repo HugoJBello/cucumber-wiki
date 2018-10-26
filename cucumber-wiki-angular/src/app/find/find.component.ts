@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EntriesService, EntryDTO } from '../entries.service';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource, PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-find',
@@ -14,6 +14,9 @@ export class FindComponent implements OnInit {
   limit = 10;
   dataSource: MatTableDataSource<EntryDTO>;
   displayedColumns = ['created_at', 'title'];
+  // MatPaginator Output
+  pageEvent: PageEvent;
+
   entries: EntryDTO[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -24,6 +27,10 @@ export class FindComponent implements OnInit {
   async find() {
     this.entries = await this.entriesService.findEntries(this.text, this.limit, 0);
     this.dataSource = new MatTableDataSource<EntryDTO>(this.entries);
+  }
+
+  pageEventFired($event) {
+    this.pageEvent = $event;
   }
 
 }

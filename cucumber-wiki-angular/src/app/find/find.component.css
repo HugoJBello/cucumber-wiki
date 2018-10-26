@@ -4,3 +4,7 @@ display: block;
        border-style: solid;
        overflow:auto
 }
+
+table {
+    width: 100%;
+  }
