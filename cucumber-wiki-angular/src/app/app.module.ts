@@ -17,10 +17,11 @@ import { EntriesComponent } from './entries/entries.component';
 import { EntryComponent } from './entry/entry.component';
 import { FindComponent } from './find/find.component';
 import { NgxMdModule } from 'ngx-md';
-import { MatSelectModule } from '@angular/material';
+import { MatSelectModule, MatPaginatorModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { ConfigService } from './config/config.service';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,9 @@ import { ConfigService } from './config/config.service';
     HttpClientModule,
     MatSelectModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [AuthService,
     EntriesService,
