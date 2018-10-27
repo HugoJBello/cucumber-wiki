@@ -18,6 +18,9 @@ class AppNavbar extends React.Component {
                             <a className="nav-link" href="/entries">Entries</a>
                         </li>
                         <li className="nav-item">
+                            <a className="nav-link" href="/edit">Edit</a>
+                        </li>
+                        <li className="nav-item">
                             <a className="nav-link" href="/find">Find</a>
                         </li>
                     </ul>
@@ -25,6 +28,12 @@ class AppNavbar extends React.Component {
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
                         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
+                    <div className="nav-item my-sm-0">
+                        <a className="nav-link" href="/login">Login</a>
+                    </div>
+                    <div className="nav-item my-sm-0">
+                        <a className="nav-link" href="/register">Register</a>
+                    </div>
                 </div>
             </nav>
         )
