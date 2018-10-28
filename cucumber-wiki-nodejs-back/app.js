@@ -14,6 +14,7 @@ var morgan = require('morgan');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('./config/database');
+var debug = require('debug')('cucumber-wiki-nodejs-back:server');
 
 require('dotenv').load();
 
