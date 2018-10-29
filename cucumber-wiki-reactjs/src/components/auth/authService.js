@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 const BASE_URL = 'http://hbello.info';
 
 export { login, register };

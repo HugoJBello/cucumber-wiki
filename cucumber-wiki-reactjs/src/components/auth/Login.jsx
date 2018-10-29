@@ -3,6 +3,7 @@ import { login } from './authService';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Login.css';
+import { LoginContext } from './LoginContext';
 
 class Login extends Component {
 
@@ -28,6 +29,7 @@ class Login extends Component {
         login({ username, password }).then((result) => {
             localStorage.setItem('jwtToken', result.token);
             this.setState({ message: '' });
+            this.setUser(username);
             this.props.history.push('/')
         })
             .catch((error) => {
@@ -36,7 +38,9 @@ class Login extends Component {
                 }
             });
     }
-
+    setUser = (username) => {
+        return <LoginContext.Consumer>{(context) => { context.changeUsername(username) }}</LoginContext.Consumer>
+    }
     render() {
         const { username, password, message } = this.state;
         return (

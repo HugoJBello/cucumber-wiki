@@ -1,4 +1,5 @@
 import React from 'react';
+import { LoginContext } from './auth/LoginContext';
 
 class AppNavbar extends React.Component {
     render() {
@@ -33,6 +34,11 @@ class AppNavbar extends React.Component {
                     </div>
                     <div className="nav-item my-sm-0">
                         <a className="nav-link" href="/register">Register</a>
+                    </div>
+                    <div className="nav-item my-sm-0">
+                        <LoginContext.Consumer>
+                            {(context) => <span>{context.username}</span>}
+                        </LoginContext.Consumer>
                     </div>
                 </div>
             </nav>

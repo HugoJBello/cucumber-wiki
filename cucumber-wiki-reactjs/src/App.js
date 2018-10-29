@@ -3,13 +3,17 @@ import './App.css';
 import AppNavbar from './components/AppNavbar';
 import Roots from './Roots';
 import React from 'react';
+import { LoginContext } from './components/auth/LoginContext';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <AppNavbar></AppNavbar>
-        <Roots></Roots>
-      </div>
+      <LoginContext.Provider value={{ userName: null }}>
+        <div className="App">
+          <AppNavbar></AppNavbar>
+          <Roots></Roots>
+        </div>
+      </LoginContext.Provider >
+
     );
   }
 }
