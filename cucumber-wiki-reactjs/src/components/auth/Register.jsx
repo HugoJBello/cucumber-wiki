@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 import './Login.css';
+import { register } from './authService';
 
 class Create extends Component {
 
@@ -10,8 +8,7 @@ class Create extends Component {
         super();
         this.state = {
             username: '',
-            password: '',
-            backendUrl: "http://hbello.info"
+            password: ''
         };
     }
     onChange = (e) => {
@@ -25,7 +22,7 @@ class Create extends Component {
 
         const { username, password } = this.state;
 
-        axios.post(this.state.backendUrl + "/security/signup/", { username, password })
+        register({ username, password })
             .then((result) => {
                 this.props.history.push("/login")
             });

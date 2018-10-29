@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { login } from './authService';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Login.css';
@@ -12,7 +12,6 @@ class Login extends Component {
             username: '',
             password: '',
             message: '',
-            backendUrl: 'http://hbello.info'
         };
     }
     onChange = (e) => {
@@ -26,12 +25,11 @@ class Login extends Component {
 
         const { username, password } = this.state;
 
-        axios.post(this.state.backendUrl + "/security/login", { username, password })
-            .then((result) => {
-                localStorage.setItem('jwtToken', result.data.token);
-                this.setState({ message: '' });
-                this.props.history.push('/')
-            })
+        login({ username, password }).then((result) => {
+            localStorage.setItem('jwtToken', result.token);
+            this.setState({ message: '' });
+            this.props.history.push('/')
+        })
             .catch((error) => {
                 if (error.response.status === 401) {
                     this.setState({ message: 'Login failed. Username or password not match' });
