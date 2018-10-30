@@ -27,19 +27,15 @@ class Login extends Component {
         const { username, password } = this.state;
 
         login({ username, password }).then((result) => {
-            localStorage.setItem('jwtToken', result.token);
-            this.setState({ message: '' });
-            this.context.username = username;
-            this.props.history.push('/')
-        })
+                localStorage.setItem('jwtToken', result.token);
+                this.setState({ message: '' });
+                this.props.history.push('/')
+            })
             .catch((error) => {
                 if (error.response.status === 401) {
                     this.setState({ message: 'Login failed. Username or password not match' });
                 }
             });
-    }
-    setUser = (username) => {
-        return <LoginContext.Consumer>{(context) => { context.changeUsername(username) }}</LoginContext.Consumer>
     }
     render() {
         const { username, password, message } = this.state;

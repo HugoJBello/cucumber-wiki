@@ -1,11 +1,12 @@
 import React from 'react';
 import { LoginContext } from './auth/LoginContext';
+import { Link } from "react-router-dom";
 
 class AppNavbar extends React.Component {
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a className="navbar-brand" href="/">App</a>
+                <Link className="navbar-brand" to="/">App</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -13,16 +14,16 @@ class AppNavbar extends React.Component {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <a className="nav-link" href="/home">Home <span className="sr-only">(current)</span></a>
+                            <Link className="nav-link" to="/home">Home <span className="sr-only">(current)</span></Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/entries">Entries</a>
+                            <Link className="nav-link" to="/entries">Entries</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/edit">Edit</a>
+                            <Link className="nav-link" to="/edit">Edit</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/find">Find</a>
+                            <Link className="nav-link" to="/find">Find</Link>
                         </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
@@ -30,15 +31,12 @@ class AppNavbar extends React.Component {
                         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                     <div className="nav-item my-sm-0">
-                        <a className="nav-link" href="/login">Login</a>
+                        <Link className="nav-link" to="/login">Login</Link>
                     </div>
                     <div className="nav-item my-sm-0">
-                        <a className="nav-link" href="/register">Register</a>
+                        <Link className="nav-link" to="/register">Register</Link>
                     </div>
                     <div className="nav-item my-sm-0">
-                        <LoginContext.Consumer>
-                            {(context) => <span>{context.username}</span>}
-                        </LoginContext.Consumer>
                     </div>
                 </div>
             </nav>

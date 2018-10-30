@@ -3,24 +3,21 @@ import './App.css';
 import AppNavbar from './components/AppNavbar';
 import Roots from './Roots';
 import React from 'react';
-import { LoginContext } from './components/auth/LoginContext';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+
 class App extends Component {
 
   render() {
-    let context = {
-      username: "hugo",
-      changeUsername: (username) => {
-        this.setState({ username: username })
-      }
-    };
     return (
-      <LoginContext.Provider value={context}>
-        <div className="App">
+      <div className="App">
+        <Router>
+        <div>
           <AppNavbar></AppNavbar>
           <Roots></Roots>
+          </div>
+          </Router>
         </div>
-      </LoginContext.Provider >
-
     );
   }
 }

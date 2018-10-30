@@ -13,7 +13,6 @@ class Roots extends Component {
     render() {
         return (
             <div className="container">
-                <Router>
                     <div>
                         <Route path="/entries" component={Entries} />
                         <Route path="/home" component={Home} />
@@ -23,7 +22,6 @@ class Roots extends Component {
                         <Route path="/login" component={Login} />
                         <Route path="/register" component={Create} />
                     </div>
-                </Router>
             </div>
         );
     }
