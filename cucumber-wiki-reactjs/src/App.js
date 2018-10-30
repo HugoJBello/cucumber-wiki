@@ -5,9 +5,16 @@ import Roots from './Roots';
 import React from 'react';
 import { LoginContext } from './components/auth/LoginContext';
 class App extends Component {
+
   render() {
+    let context = {
+      username: "hugo",
+      changeUsername: (username) => {
+        this.setState({ username: username })
+      }
+    };
     return (
-      <LoginContext.Provider value={{ userName: null }}>
+      <LoginContext.Provider value={context}>
         <div className="App">
           <AppNavbar></AppNavbar>
           <Roots></Roots>

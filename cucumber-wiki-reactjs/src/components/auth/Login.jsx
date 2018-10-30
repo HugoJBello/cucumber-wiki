@@ -29,7 +29,7 @@ class Login extends Component {
         login({ username, password }).then((result) => {
             localStorage.setItem('jwtToken', result.token);
             this.setState({ message: '' });
-            this.setUser(username);
+            this.context.username = username;
             this.props.history.push('/')
         })
             .catch((error) => {
@@ -65,5 +65,7 @@ class Login extends Component {
         );
     }
 }
+
+Login.contextType = LoginContext;
 
 export default Login;
