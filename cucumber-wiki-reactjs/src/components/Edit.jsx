@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { getEntry } from './utils/EntriesService';
 
 class Edit extends Component {

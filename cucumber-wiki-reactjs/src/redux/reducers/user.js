@@ -1,6 +1,6 @@
 import { UPDATE_USER, GET_USER } from '../actions'
 
-const todos = (state = [], action) => {
+const todos = (state = "", action) => {
     switch (action.type) {
         case UPDATE_USER:
             return action.payload.user;
