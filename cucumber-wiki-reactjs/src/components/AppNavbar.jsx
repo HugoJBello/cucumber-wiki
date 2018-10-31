@@ -38,15 +38,27 @@ class AppNavbar extends React.Component {
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
                         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
+                    {this.props.user == "" &&
+                    
+                        <div className="nav-item my-sm-0">
+                            <Link className="nav-link" to="/login">Login</Link>
+                        </div> 
+                    }
+                    {this.props.user== "" &&
+                        <div className = "nav-item my-sm-0" >
+                            <Link className="nav-link" to="/register">Register</Link> 
+                        </div>
+                    }
+                    {this.props.user!= "" &&
                     <div className="nav-item my-sm-0">
-                        <Link className="nav-link" to="/login">Login</Link>
+                        <div className="nav-link" >{this.props.user}</div>
                     </div>
+                    }
+                    {this.props.user!= "" &&
                     <div className="nav-item my-sm-0">
-                        <Link className="nav-link" to="/register">Register</Link>
+                        <div className="nav-link" >Logout</div>
                     </div>
-                    <div className="nav-item my-sm-0">
-                    {this.props.user}
-                    </div>
+                    }
                 </div>
             </nav>
         )
