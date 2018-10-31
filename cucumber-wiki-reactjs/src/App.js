@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import rootReducer from './redux/reducers'
 import { createStore } from 'redux'
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 class App extends Component {
 
@@ -26,6 +26,7 @@ class App extends Component {
         </Provider>
     );
   }
+
 }
 
 export default App;

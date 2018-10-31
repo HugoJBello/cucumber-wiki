@@ -1,8 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types'
+
 import { LoginContext } from './auth/LoginContext';
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { updateUser, getUser } from '../redux/actions';
 
 class AppNavbar extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+        this.state = {};
+    }
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -37,6 +45,7 @@ class AppNavbar extends React.Component {
                         <Link className="nav-link" to="/register">Register</Link>
                     </div>
                     <div className="nav-item my-sm-0">
+                    {this.props.user}
                     </div>
                 </div>
             </nav>
@@ -44,4 +53,18 @@ class AppNavbar extends React.Component {
     }
 }
 
-export default AppNavbar;
+AppNavbar.propTypes = {
+    user: PropTypes.string.isRequired
+}
+
+
+const mapStateToProps = (state, ownProps) => ({
+    user: state.user
+});
+
+const mapActionsToProps = {
+    onUpdateUser: updateUser,
+    onGetUser: getUser,
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(AppNavbar);
