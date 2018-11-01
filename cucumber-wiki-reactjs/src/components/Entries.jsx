@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { getEntries } from './utils/EntriesService';
+import { Link } from "react-router-dom";
+import EntryDisplay from './EntryDisplay.css';
 
 
 class Entries extends Component {
@@ -24,7 +26,17 @@ class Entries extends Component {
 
     entryTable = (entries) => {
         if (entries) {
-            return this.state.entries.map((entry, i) => <div key={i}>{entry.name}</div>)
+            return this.state.entries.map((entry, i) =>
+                <div key={i} className="card">
+                <div className="card-body">
+                      <Link to="/entry/{entry.name}" className="card-title">
+                        <h4>{entry.title}</h4>
+                      </Link>
+                      <div className="card-text">
+                       {entry.content}
+                      </div>
+                </div>
+            </div>)
         }
         else {
             return <div>No entries</div>;
@@ -32,7 +44,11 @@ class Entries extends Component {
     }
 
     render() {
-        return <div>{ this.entryTable(this.state.entries) }</div>;
+        return <div className="entry-cards">
+            <div className="card-columns">
+            { this.entryTable(this.state.entries) }
+            </div>
+        </div>;
     }
 }
 
